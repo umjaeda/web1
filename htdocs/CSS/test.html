@@ -1,0 +1,669 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <meta charset="utf-8">
+	<head id="Head1">
+<script type='text/javascript'>
+var _btnAlertOK = '확인';
+var _btnAlertCancel = '취소';
+var _strLblClose = '닫기';
+var _strLblOpen = '열기';
+var _maxFileSize = '150';
+var _ExtenstionFileter = 'cs.aspx.mdf.dll.pdb.exe.vbs';
+var _MaxUnitSize = '50';
+var _MaxUpload = '15';
+var _Language = 'ko';
+var _SystemMode = 'Real';
+var _DN_Theme = 'X_portal_126';
+var _TodoListAlertShowInterval = '300000';
+var _DN_ID = '1';
+var _DN_Code = 'ABLGAM';
+var _UR_Code = 'jaenamu';
+var _GR_Code = 'D017';
+var _LanguageCode = 'ko';
+var _ServerDateSimpleFormat = 'yyyy-MM-dd';
+var _CalenderDateFormat = 'yyyy-MM-dd';
+var _DateFullFormat = 'yyyy-MM-dd HH:mm:ss';
+var _UR_TimeZone = '00:00:00';
+var _UR_TimeZoneDisplay = '';
+var _StandardTimeZoneDisplay = '(GMT+9)';
+var _UsePresenceDisplay = 'N';
+var _UserMenuSyncTime = '2018-07-04T17:59:44.077';
+var _MenuSyncTime = '2018-07-20T09:29:01.530';
+var _Msg_NoDataList = '조회할 목록이 없습니다.';
+</script>
+
+<style type='text/css'>
+.Theme_body_bgcolor {background-color:#ffffff}
+</style>
+<script type="text/javascript" src="/WebSite/Base/Controls/jquery-last.js"></script>
+<script type="text/javascript" src="/WebSite/Base/Controls/jquery-ui-1.8.11.min.js"></script>
+<script type="text/javascript" src="/WebSite/Base/Controls/jquery.selectbox-0.6.1.js"></script>
+<script type="text/javascript" src="/WebSite/Base/Controls/Covi.Framework.Script.Const.js"></script>
+<script type="text/javascript" src="/WebSite/Base/Controls/Covi.Framework.Script.Common.js"></script>
+<script type="text/javascript" src="/WebSite/Base/Controls/Covi.Framework.Script.Controls.js"></script>
+<script type="text/javascript" src="/WebSite/Base/Controls/Covi.Framework.Script.Utils.js"></script>
+<script type="text/javascript" src="/WebSite/Common/Controls/Common.js"></script>
+<script type="text/javascript" src="/WebSite/Common/Controls/Utils.js"></script>
+<script type="text/javascript" src="/WebSite/Common/Controls/NameControl.js"></script>
+<link type="text/css" rel="stylesheet" href="/WebSite/Base/Controls/jquery-ui-1.8.11.custom.css" />
+<link type="text/css" rel="stylesheet" href="/WebSite/Base/Controls/jquery.selectbox.css" />
+<link type="text/css" rel="stylesheet" href="/WebSite/Base/Controls/Covi.Framework.Style.Controls.css" />
+<link type="text/css" rel="stylesheet" href="/Images/Css/Common.css" />
+<link type="text/css" rel="stylesheet" href="/Images/Css/Controls.css" />
+<link type="text/css" rel="stylesheet" href="/Images/css/content_wp.css" />
+<link type="text/css" rel="stylesheet" href="/Images/Css/Theme/X_portal_126.css" />
+<script type="text/javascript" src="/WebSite/Portal/WebPart/Schedule/ScheduleWepart.js"></script>
+<script type="text/javascript" src="/WebSite/Portal/WebPart/Board/BoardConnectRollingImage/jq.rolling.js"></script>
+<link type="text/css" rel="stylesheet" href="/WebSite/Portal/WebPart/Board/BoardConnectRollingImage/jq.rolling.css" />
+<link type="text/css" rel="stylesheet" href="/Images/css/mypage.css" />
+<title>
+	ABLGAM GROUPWARE
+</title><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+        <script src="/WebSite/Common/Controls/TopMaster.js" type="text/javascript"></script>
+
+
+
+
+        <!-- 근태관리 임시 스타일 -->
+        <style>
+            #divAttendanceManage {
+	            box-sizing : border-box;
+	            position : absolute;
+	            margin-top : 50px;
+	            right : 5px;
+	            width : 0px;
+	            min-height : 110px;
+                padding-bottom : 10px;
+	            border : 1px solid #c8c8c8;
+	            border-radius : 4px;
+	            background-color : #f8f8f8;
+	            opacity : 0;
+            }
+
+            .attendance_header {
+	            width : 100%;
+	            height : 50px;
+                background-color : #f8f8f8;
+            }
+
+            .attendance_header > p {
+	            width : 100%;
+                height : 100%;
+	            text-align : center;
+	            font-size : 13px;
+	            font-weight : bold;
+                line-height : 50px;
+            }
+
+            .attendance_body {
+	            width : 100%;
+	            height : 100%;
+	            position : relative;
+	            padding : 10px;
+	            box-sizing : border-box;
+                background-color : #fff;
+                border : 1px solid #bbb;
+            }
+
+            .attendance_body_wrap {
+                width : 100%;
+                height : 100%;
+                position : relative;
+                padding : 0px 10px 0px 10px;
+                box-sizing : border-box;
+            }
+
+            .attendance_close_btn {
+	            position : absolute;
+	            right : 10px;
+	            top : 10px;
+            }
+
+            .attendance_btn {
+                cursor : pointer;
+            }
+
+            .attendance_btn_label {
+                font-size : 12px;
+                border : 1px solid #ccc;
+                display : inline-block;
+                height : 23px;
+                float : right;
+                line-height : 23px;
+                box-sizing : border-box;
+                padding : 0px 8px 0px 8px;
+                background-color : #fdfdfd;
+                font-weight : bold;
+                border-left : none;
+            }
+
+            .attendance_body>div:first-child, .attendance_body>div:nth-child(2) {
+                height : 30px;
+                margin-bottom : 5px;
+                border-bottom : 1px solid #f0f0f0;
+                line-height : 30px;
+            }
+
+            .attendance_desc_text_wrap {
+                width : 100%;
+            }
+
+            .attendance_desc_text_wrap>textarea {
+                width : 100%;
+                height : 80px;
+                resize : none;
+                outline : none;
+                margin-bottom : 5px;
+            }
+        </style>
+        <!-- 근태관리 임시 스타일 끝 -->
+
+	</head>
+	<body oncontextmenu="//return false;" onselectstart="//return false;" class="Theme_body_bgcolor">
+		<form method="post" action="./Main.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="hidTodoInitInfo" id="hidTodoInitInfo" value="" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjAzMzk0NzYyN2Rk7V64szoQmh5H4bdqhCF5wi9GcFvqf0rprgxTQyGXqak=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+var id_Head1 = 'Head1';
+var nm_Head1 = 'ctl00$Head1';
+var id_cphHeader = 'cphHeader';
+var nm_cphHeader = 'ctl00$cphHeader';
+var id_form1 = 'form1';
+var nm_form1 = 'form1';
+var id_divAlwaysShowButton = 'divAlwaysShowButton';
+var nm_divAlwaysShowButton = 'ctl00$divAlwaysShowButton';
+var id_btnShowDevHelperInfo = 'btnShowDevHelperInfo';
+var nm_btnShowDevHelperInfo = 'ctl00$btnShowDevHelperInfo';
+var id_divHeader = 'divHeader';
+var nm_divHeader = 'ctl00$divHeader';
+var id_cphContent = 'cphContent';
+var nm_cphContent = 'ctl00$cphContent';
+var id_divContent = 'cphContent_divContent';
+var nm_divContent = 'ctl00$cphContent$divContent';
+var id_gadget = 'gadget';
+var nm_gadget = 'ctl00$gadget';
+var id_divFooter = 'divFooter';
+var nm_divFooter = 'ctl00$divFooter';
+var id_btnMobileView = 'btnMobileView';
+var nm_btnMobileView = 'ctl00$btnMobileView';
+var id_divUserIP_LastTime = 'divUserIP_LastTime';
+var nm_divUserIP_LastTime = 'ctl00$divUserIP$LastTime';
+var id_btnMobileViewExt = 'btnMobileViewExt';
+var nm_btnMobileViewExt = 'ctl00$btnMobileViewExt';
+var id_linkMobileViewExt = 'linkMobileViewExt';
+var nm_linkMobileViewExt = 'ctl00$linkMobileViewExt';
+var id_hidLoginSelected = 'hidLoginSelected';
+var nm_hidLoginSelected = 'ctl00$hidLoginSelected';
+var id_hidDevHelperInfo = 'hidDevHelperInfo';
+var nm_hidDevHelperInfo = 'ctl00$hidDevHelperInfo';
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="0C94ECD1" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAASTB/jZEtI+6tdywhA7nQflUxkQ4fk0ke1n2YxOSqDoVrJGYWACX/Ysr+m3qZtLj08PUohQxSfU7xxawFoGSAB9IJFTaCgEb/3Vnzgt/hQ+5xCahTGDM7y8fs8/jCOJe1k=" />
+</div>
+            <div id="divAlwaysShowButton" class="btn_always" style="z-index:1000;position:fixed;bottom:-6px;right:25px;width:160px">
+                <div><iframe frameborder="0" width="160px" height="30px"></iframe></div>
+                <div style="display:block; z-index:1000; position:fixed; bottom:-1px; right:3px; width:151px;"><a href="#" class="btn_always_top"><span class="txt_always_top">Top</span></a><a id="btnShowDevHelperInfo" class="btn_always_dev" href="javascript:__doPostBack(&#39;ctl00$btnShowDevHelperInfo&#39;,&#39;&#39;)"><span class="txt_always_dev">개발지원</span></a><a href="javascript:XFN_ScreenLock('Lock');" class="btn_always_lock"><span class="txt_always_lock">Lock</span></a></div>
+            </div>
+            <div id="divFixWrap">
+			    <div id="divFixConts">
+                <div id="divPortalHeaderFix">
+					<!-- Header 시작 -->
+					<div id="divHeader" class="header">
+						<h1><a href="/Website/Portal/Main.aspx" class="logo_header" title=\"ABLGAM GROUPWARE\"></a></h1>
+                        <ul class="gnb"><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_0"><em><span><a id="top_Portal" target="_self" href="javascript:ATop_OnClick('/WebSite/Portal/Main.aspx', 'Portal', '', '');XFN_GadgetOftenMenu('3','MN','Portal','홈','/WebSite/Portal/Main.aspx','');"><center><div class='Portal_systemIco'></div></center>홈</a></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_1"><em><span><a id="top_Approval" target="_self" href="javascript:ATop_OnClick('/WebSite/Approval/ApprovalMain.aspx', 'Approval', '', '');XFN_GadgetOftenMenu('73','MN','Approval','전자결재','/WebSite/Approval/ApprovalMain.aspx','');"><center><div class='Approval_systemIco'></div></center>전자결재</a></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_2"><em><span><a id="top_Mail" target="_self" href="javascript:ATop_OnClick('/WebSite/Mail/Main.aspx', 'Mail', '', '');XFN_GadgetOftenMenu('328','MN','Mail','메일','/WebSite/Mail/Main.aspx','');"><center><div class='Mail_systemIco'></div></center>메일</a></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_3"><em><span><a id="top_Schedule" target="_self" href="javascript:ATop_OnClick('/WebSite/Basic/Schedule/Month.aspx?SelectMenu=Schedule.Total', 'Schedule', '', '');XFN_GadgetOftenMenu('5','MN','Schedule','일정관리','/WebSite/Basic/Schedule/Month.aspx?SelectMenu=Schedule.Total','');"><center><div class='Schedule_systemIco'></div></center>일정관리</a></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_4"><em><span><a id="top_Board" target="_self" href="javascript:ATop_OnClick('/WebSite/Basic/Board/BoardMain.aspx', 'Board', '', '');XFN_GadgetOftenMenu('4','MN','Board','공지','/WebSite/Basic/Board/BoardMain.aspx','');"><center><div class='Board_systemIco'></div></center>공지</a></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_5"><em><span><a id="top_Resource" target="_self" href="javascript:ATop_OnClick('/WebSite/Basic/Resource/Main.aspx', 'Resource', '', '');XFN_GadgetOftenMenu('6','MN','Resource','미팅룸예약','/WebSite/Basic/Resource/Main.aspx','');"><center><div class='Resource_systemIco'></div></center>미팅룸예약</a></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_6"><em><span><a id="top_Doc" target="_self" href="javascript:ATop_OnClick('/WebSite/Extension/Doc/DocMain.aspx', 'Doc', '/WebSite/Extension/Doc/DocHomeABL.aspx?system=Doc&alias=DocManageHome&mnid=567', '');XFN_GadgetOftenMenu('230','MN','Doc','문서관리','/WebSite/Extension/Doc/DocMain.aspx','/WebSite/Extension/Doc/DocHomeABL.aspx?system=Doc&alias=DocManageHome&mnid=567');"><center><div class='Doc_systemIco'></div></center>문서관리</a></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_7"><em><span><a id="top_Survey" target="_self" href="javascript:ATop_OnClick('/WebSite/Basic/Survey/Main.aspx', 'Survey', '', '');XFN_GadgetOftenMenu('279','MN','Survey','전자설문','/WebSite/Basic/Survey/Main.aspx','');"><center><div class='Survey_systemIco'></div></center>전자설문</a></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_8"><em><span></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_9"><em><span><a id="top_VacationManager" target="_self" href="javascript:ATop_OnClick('/WebSite/Extension/VacationManager/Main.aspx', 'VacationManager', '', '');XFN_GadgetOftenMenu('496','MN','VacationManager','휴가관리','/WebSite/Extension/VacationManager/Main.aspx','');"><center><div class='VacationManager_systemIco'></div></center>휴가관리</a></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_10"><em><span><a id="top_HR" target="_self" href="javascript:ATop_OnClick('/WebSite/Extension/HR/HREmployeeList.aspx
+', 'HR', '/WebSite/Extension/HR/HRCareerList.aspx?system=HR&alias=HR.CareerList&mnid=499', '');XFN_GadgetOftenMenu('497','MN','HR','HR','/WebSite/Extension/HR/HREmployeeList.aspx
+','/WebSite/Extension/HR/HRCareerList.aspx?system=HR&alias=HR.CareerList&mnid=499');"><center><div class='HR_systemIco'></div></center>HR</a></span></em></li><li class="off" onmouseover="LiTop_OnMouseOver(this);" id="liTopMenu_11"><em><span><a id="top_CP" target="_self" href="javascript:ATop_OnClick('/WebSite/Extension/Compliance/CPAccountManage.aspx
+', 'CP', '/WebSite/Extension/Compliance/CPAccountManage.aspx?system=CP&alias=CP.AccountManage.AM&mnid=553', '');XFN_GadgetOftenMenu('551','MN','CP','Compliance','/WebSite/Extension/Compliance/CPAccountManage.aspx
+','/WebSite/Extension/Compliance/CPAccountManage.aspx?system=CP&alias=CP.AccountManage.AM&mnid=553');"><center><div class='CP_systemIco'></div></center>Compliance</a></span></em></li></ul><div id='divMyMenu' class="mymenu"><p><a class="top_ico_todo" style='cursor:pointer;' title='ToDo List 열기' onclick="XFN_ToDoList_OnChange()"><span class="txt_todo1">엄재남</span><span class="txt_todo2">[IT팀/ABL Global Asset Management Co., Ltd.]</span></a></p></div><div class="mymenu2"><a class="top_ico_admin" href="javascript:XFN_aAdmin_Click();" title='관리자'><span class="txt_admin">관리자</span></a> <a class="top_ico_config" href="javascript:ATop_OnClick('/WebSite/Common/Personal/MyInfo/password.aspx', 'mypage', '', '265');"><span class="txt_config">개인환경설정</span></a> <a id='btn_CacheResetting' class="top_ico_resetting" href="javascript:XFN_OutputCacheAll();"><span class="txt_resetting">메뉴 초기화</span></a> </div><div class="lmenu"><a class="top_ico_org" id="aOrgMap" style='cursor:pointer;' onclick="XFN_aOrgMap_Click()" title="임직원조회"><span class="txt_org">임직원조회</span></a></div>
+
+						<!-- Todolist 시작 -->
+						<div id="divTodoList" class="todo_g" style="display: none;">
+							<div class="todo_ico"><img src="/Images/Images/common/todolist_ico.gif" alt="" /></div>
+							<div class="todo_tit">
+								<span class="txt_gn11">최근 등록된 알림입니다.</span>
+							</div>
+							<div class="todo_body" style="overflow:hidden;">
+								<div id="divTodoListContent"></div>
+							</div>
+							<div class="todo_close">
+								<a href="javascript:XFN_ToDoList_OnChange();" class="join_todolist_x"></a>
+							</div>
+						</div>
+						<!-- Todolist 끝 -->
+
+                        <!-- 근태관리 시작 -->
+                        <div id="divAttendanceManage" style="display: none;">
+                            <div class="attendance_header">
+                                <a href="javascript:XFN_Attendance_Click()" class="attendance_close_btn">
+                                    <img src="/Images/Images/common/todolist_x.gif" alt="닫기" title="닫기">
+                                </a>
+                                <p>출근 / 퇴근 시간 체크</p>
+                            </div>
+                            <div class="attendance_body_wrap">
+                                <div class="attendance_body">
+                                    <div>
+                                        <strong>출근시간</strong>
+                                        <span id="checkInLabel" class="attendance_body_time_text"></span>
+                                        <a id="checkInButton" class="attendance_btn" disabled onclick="return false;" style="float:right;">
+                                            <img src="/images/images/common/btn/btn_confirm.gif">
+                                            <span class="attendance_btn_label">
+                                                출근 등록
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <strong>퇴근시간</strong>
+                                        <span id="checkOutLabel" class="attendance_body_time_text"></span>
+                                    </div>
+                                    <div>
+                                        <p><strong>비고</strong></p>
+                                        <label id="viewDesc"></label>
+                                        <div class="attendance_desc_text_wrap">
+                                            <textarea id="checkOutDesc" disabled></textarea>
+                                        </div>
+                                        <a id="checkOutButton" class="attendance_btn" disabled  onclick="return false;">
+                                            <img src="/images/images/common/btn/btn_confirm.gif">
+                                            <span class="attendance_btn_label">
+                                                퇴근 기록
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 근태관리 끝 -->
+
+						<div id="divAlert" class="notice_g" style="display:none;">
+							<div class="notice_ico"><img src="/Images/Images/common/notice_ico.gif" alt="" /></div>
+							<div class="notice_con"><a href="javascript:aAlert_OnClick();"><span id="spanAlertCount" class="txt_yb12"></span><span id="spanAlertMessage" class="txt_wn12"></span></a></div>
+							<div style="display:none;"><a href="javascript:XFN_Alert_OnChange(0);">닫기</a></div>
+						</div>
+					</div>
+					<!-- Header 끝 -->
+                    <div class="" id="divMyPortal" style="display:none; min-height:100px; background:#fff; text-align:center;"><div class="myportalsetting" id="divMyPortalSetting"><p class="myportal_title"><img src="/Images/Images/Portal/MyPortal/myportal_title.png" alt="" /> <a href="javascript:;" onclick="XFN_MyPortal_TaskPopup();" class="btn_myportal" style="display:none;" title="Import/Export"><img src="/Images/Images/Portal/MyPortal/mywp_btn01.png" alt="Import/Export" /></a><a href="javascript:;" onclick="XFN_MyPortal_ConfigOpen();" class="btn_myportal btn_layoutsetting" title="Setting"><img src="/Images/Images/Portal/MyPortal/mywp_btn02.png" alt="Setting" /></a><a href="javascript:;" onclick="XFN_MyPortal_Save();" class="btn_myportal" style="display:none;" title="Save"><img src="/Images/Images/Portal/MyPortal/mywp_btn03.png" alt="Save" /></a><span class="layout_save" style="display:none;"><input type="checkbox" id="chkMyPortalFixed" name="chkMyPortalFixed" value="Y" style="margin-left:10px; margin-right:0; border:0;" /><label for="chkMyPortalFixed">&nbsp;레이아웃을 현재 넓이로 저장</label></span></p><ul class="mywp_tabmenu" style="display:none;"><li class="mywp_tabmenu_off"><a href="javascript:;" onclick="_MyPortal.SettingTabMenu(this);"><span>Layout</span></a></li><li class="mywp_tabmenu_on"><a href="javascript:;" onclick="_MyPortal.SettingTabMenu(this);"><span>WebPart</span></a></li></ul><div class="myportalsetting_box" style="display:none;overflow:hidden;" id="divMyPortal_Tab_WebPart"><div id="divWebPartslides" style="overflow:hidden;"><ul class="myportalsetting_ul" id="ulMyPortal_WebPart" style="margin:0 45px;"><li>&nbsp;</li></ul></div></div><div class="myportalsetting_box" style="display:none;overflow: hidden;" id="divMyPortal_Tab_Layout"><div id="divLayoutslides" style="overflow:hidden;"><ul class="myportalsetting_ul" id="ulMyPortal_Layout" style="margin:0 45px;"><li>&nbsp;</li></ul></div></div></div><div class="portallayout" id="divMyPortalLayout" style="min-height:100px;"></div></div><input type="hidden" id="hidMyPortal_LayoutId" value="" /><input type="hidden" id="hidMyPortal_LayoutDetailOptionType" value="" /><input type="hidden" id="hidMyPortal_LayoutDetailOptionValue" value="" /><textarea id="hidMyPortal_LayoutDetailData" style="display:none;"></textarea><textarea id="hidMyPortal_LayoutFrame" class ="NoCheckXSS" style="display:none;"></textarea>
+					<!-- Content 시작 -->
+					<div class="layout">
+						<div id="divContainer" class="container">
+
+    <div id="cphContent_divContent" class="content_mf"><div class="con_layout05" id="0"><div class="con_l_layout05" id="1" group="0"><div class="layoutb" id="2"><div id="WP0" style="min-height:110px;" class="WP_wrap"><center></center></div><div id="WP1" style="min-height:270px;" class="WP_wrap"><center><img src='/Images/Images/Controls/Progress/loding12.gif' alt='Loading...' /></center></div><div id="WP2" style="min-height:0px;" class="WP_wrap"><center></center></div></div></div><div class="con_c_box_05" id="3"><div class="con_ct_layout05" id="4" group="0"><div class="layoutb" id="5"><div id="WP3" style="min-height:0px;" class="WP_wrap"><center></center></div><div id="WP4" style="min-height:0px;" class="WP_wrap"><center></center></div><div id="WP5" style="min-height:150px;" class="WP_wrap"><center></center></div><div id="WP6" style="min-height:150px;" class="WP_wrap"><center></center></div><div id="WP7" style="min-height:0px;" class="WP_wrap"><center></center></div></div></div></div><div class="con_r_layout05" id="6" group="0"><div class="layoutb" id="7"><div id="WP8" style="min-height:0px;" class="WP_wrap"><center></center></div><div id="WP9" style="min-height:120px;" class="WP_wrap"><center></center></div></div></div></div></div>
+    <div style="display: none;"><input type="hidden" id="hidWebPartsLoadCount" value="0" /></div>
+    <script type="text/javascript" language="javascript">
+    var _nWebPartsAllCount = 0;     // WebParts 로드 할 전체 개수
+    // WebParts 호출
+    //$(document).ready(function () {
+        $("#hidWebPartsLoadCount").val("0");
+        var _WebPartsInfo = "WP0!!!327!!!1!!!Common!!!내정보!!!126!!!/WebSite/Portal/WebPart/Mybox/WebParts.aspx!!!0!!!2018-01-13T08:26:::WP2!!!326!!!131!!!Common!!!휴가관리!!!126!!!/WebSite/Portal/WebPart/VacationManager/WebParts.aspx!!!600!!!2018-02-20T18:08:::WP3!!!284!!!104!!!Common!!!전자결재결재함웹파트!!!126!!!/WebSite/Portal/WebPart/Approval/ApprovalWebPart/WebParts.aspx!!!100!!!2015-09-15T11:16:::WP4!!!325!!!93!!!Common!!!받은메일!!!126!!!/WebSite/Portal/WebPart/WebMail/WebMailList_Customize/WebParts.aspx!!!300!!!2017-11-24T09:21:::WP5!!!57!!!29!!!Common!!!공지사항!!!126!!!/WebSite/Portal/WebPart/Board/BoardSingleList/WebParts.aspx!!!700!!!2018-02-23T17:28:::WP6!!!236!!!29!!!Common!!!팀사이트!!!126!!!/WebSite/Portal/WebPart/Board/BoardSingleList/WebParts.aspx!!!800!!!2018-02-23T17:30:::WP7!!!182!!!55!!!Common!!!공지사항 알림 웹파트!!!126!!!/WebSite/Portal/WebPart/Board/BoardNoticePopUp/WebParts.aspx!!!1000!!!2018-03-05T16:46:::WP8!!!293!!!110!!!Board!!!게시판 연결 롤링 베너 이미지!!!126!!!/WebSite/Portal/WebPart/Board/BoardConnectRollingImage/WebParts.aspx!!!200!!!2017-12-19T03:10:::WP9!!!54!!!15!!!Common!!!시스템 링크(트리)!!!126!!!/WebSite/Portal/WebPart/SiteLink/SiteLink_All/WebParts.aspx!!!500!!!2018-01-13T05:35:::WP1!!!13!!!13!!!Common!!!시스템 링크(트리)!!!126!!!/WebSite/Portal/WebPart/Schedule/WebParts.aspx!!!1!!!2013-02-27T14:20:::";   // WebParts 조회를 위한 Value
+        var aStrWebPartInfo = _WebPartsInfo.split(":::");   // WebParts 1개에 대한 정보
+        _nWebPartsAllCount = aStrWebPartInfo.length - 1;    // WebParts 로드 할 전체 개수 설정
+        var sTemp = "";
+        var saWebpartList = new Array();
+        for (var i = 0; i < _nWebPartsAllCount; i++) {
+            saWebpartList[i] = _WebPartsInfo.split(":::")[i];
+        }
+        saWebpartList.sort(sortCode)
+
+        if ($("#divPortalHeaderFix").length > 0) {
+            $("#divPortalHeaderFix").addClass("portal_wrap");
+        }
+
+        for (var j = 0; j < saWebpartList.length; j++) {
+            var sDivNumber = saWebpartList[j].split("!!!")[0];
+            var sWebpartID = saWebpartList[j].split("!!!")[1];
+            var sModuleID = saWebpartList[j].split("!!!")[2];
+            var sBizSection = saWebpartList[j].split("!!!")[3];
+            var sDisplay = saWebpartList[j].split("!!!")[4];
+            var sPortalID = saWebpartList[j].split("!!!")[5];
+            var sSourcePath = saWebpartList[j].split("!!!")[6];
+            var sOrder = saWebpartList[j].split("!!!")[7];
+            var sModifyDate = saWebpartList[j].split("!!!")[8];
+
+            if (sSourcePath.indexOf("?") > 0) {
+                sSourcePath += "&System=Portal";
+            } else {
+                sSourcePath += "?System=Portal";
+            }
+            sSourcePath += "&WPN=" + sDivNumber + "&PID=" + sPortalID + "&WPID=" + sWebpartID + "&WMID=" + sModuleID;
+
+            //1. 웹파트 설정 변경시간 추가
+            sSourcePath += "&ModifyDate=" + sModifyDate;
+
+            //2. HTML Banner인 경우는 사용자별 캐싱이 되지 안도록 처리
+            if (sSourcePath.indexOf("HtmlBanner") == -1) {
+                sSourcePath += "&GR_Code=" + _GR_Code + "&UR_Code=" + _UR_Code + "&LanguageCode=" + _LanguageCode;
+            }
+
+            //3. 사용자별 메뉴 동기화 시간 추가(메뉴경로에 동기화 값이 있다면 추가함.)
+            if (sSourcePath.indexOf("UmSync") > -1) {// 사용자 메뉴타임 싱크 추가
+                sSourcePath += "&UMSync=" + _UserMenuSyncTime;
+            }
+
+            //4. 시스템 메뉴 동기화 시간 추가(메뉴경로에 동기화 값이 있다면 추가함.)
+            if (sSourcePath.indexOf("MmSync") > -1) {// 사용자 메뉴타임 싱크 추가
+                sSourcePath += "&MNSync=" + _MenuSyncTime;
+            }
+
+            //5. Order가 100이상이면 Order 값 만큼 지연 호출
+            if (sSourcePath.indexOf("WFN_") == -1) {// Ajax Page Call
+                if (parseInt(sOrder, 10) > 100) {
+                    setTimeout("LoadWebpart('" + sDivNumber + "','" + sSourcePath + "')", parseInt(sOrder, 10));
+                } else {
+                    Common.AjaxLoad(sDivNumber, sSourcePath, {}, null);
+                }
+            } else { // Script Method Call
+                try {
+                    if (parseInt(sOrder, 10) > 100) {
+                        setTimeout(sSourcePath.split("?")[0]+"()", parseInt(sOrder, 10));
+                    } else {
+                        eval(sSourcePath.split("?")[0] + "()");
+                    }
+                } catch (e) { }
+            }
+        }
+        if ("Y" == "Y") {
+            MainWebPartsLoad_Check();
+        }
+   // });
+
+    function LoadWebpart(pDivNumber, pSourcePath) {
+        Common.AjaxLoad(pDivNumber, pSourcePath, {}, null)
+    }
+
+    function sortCode(a, b) {
+        var vnDesigPos = 7;
+        if (a.split('!!!')[vnDesigPos] != null) {
+            var aDesig = parseInt(a.split('!!!')[vnDesigPos]);
+            var bDesig = parseInt(b.split('!!!')[vnDesigPos]);
+            return aDesig - bDesig;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    // 웹파트가 모두 로드 되었는지 확인.
+    function MainWebPartsLoad_Check() {
+        var bLoad = true;
+        $("DIV[id^='WP']").each(function () {
+            if ($(this).html() == "") {
+                bLoad = false;
+                return false;
+            }
+        });
+
+        if (!bLoad) {
+            setTimeout("MainWebPartsLoad_Check()", 100);
+        } else {
+            // 하단 레이아웃 처리(테마의 PreFix가 X_로 시작되는 경우 하단 레이아읏을 맞추지 않음.)
+            if (_DN_Theme.substring(0, 2) != "X_") {
+                SameToLayoutHeightSize();
+            }
+        }
+    }
+
+    // 레이아웃 div의 Height 값을 통일.
+    function SameToLayoutHeightSize() {
+        var nGroupID = 0;
+        var nHeight = 0;
+        var nMaxHeight = 0;
+        var nOverHeight = 0;
+        var nGadgetHeight = $("#divAside").height() + 10;
+        var nTodayHeight = 153;
+        var sLayoutType = "6";
+        $("DD[id^='ddResizeGroup_']").css({ "height": "0px" });
+        switch (sLayoutType) {
+            case "1":   // 2행4열
+                nMaxHeight = 0;
+                $("DIV[group='" + nGroupID + "']").each(function (pIntIndex) {
+                    $(this).removeAttr("style");
+                    nHeight = $(this).height();
+                    if ($(this).attr("overheight_id") != null) {
+                        nHeight = nHeight + $("DIV[id='" + $(this).attr("overheight_id") + "']").height() + 8;
+                    }
+                    if ($(this).children("dl").children("dd").length > 0) {
+                        $(this).children("dl").children("dd").attr("ht", nHeight);
+                    }
+                    else {
+                        $(this).append("<dl><dd id=\"ddResizeGroup_" + nGroupID + "_" + pIntIndex + "\" ht=\"" + nHeight + "\" class=\"bottom_height\" style=\"height:0px;\"></dd></dl>");
+                    }
+                    if (nMaxHeight < nHeight) {
+                        nMaxHeight = nHeight;
+                    }
+                });
+
+                if (nMaxHeight < nGadgetHeight) {
+                    nMaxHeight = nGadgetHeight;
+                }
+
+                $("DD[id^='ddResizeGroup_" + nGroupID + "_']").each(function () {
+                    $(this).css({ "height": (nMaxHeight - $(this).attr("ht")) + 1 + "px" });
+                });
+                break;
+            case "2":   // 2행3열(우측)
+                nMaxHeight = 0;
+                $("DIV[group='" + nGroupID + "']").each(function (pIntIndex) {
+                    $(this).removeAttr("style");
+                    nHeight = $(this).parent().height();
+                    if ($(this).attr("overheight_id") != null) {
+                        nHeight = nHeight + nTodayHeight;
+                    }
+                    if ($(this).children("dl").children("dd").length > 0) {
+                        $(this).children("dl").children("dd").attr("ht", nHeight);
+                    }
+                    else {
+                        $(this).append("<dl><dd id=\"ddResizeGroup_" + nGroupID + "_" + pIntIndex + "\" ht=\"" + nHeight + "\" class=\"bottom_height\" style=\"height:0px;\"></dd></dl>");
+                    }
+                    if (nMaxHeight < nHeight) {
+                        nMaxHeight = nHeight;
+                    }
+                });
+
+                if (nMaxHeight < nGadgetHeight) {
+                    nMaxHeight = nGadgetHeight;
+                }
+
+                $("DD[id^='ddResizeGroup_" + nGroupID + "_']").each(function () {
+                    $(this).css({ "height": (nMaxHeight - $(this).attr("ht")) + 1 + "px" });
+                });
+                break;
+            case "3":   // 메인
+                nGadgetHeight = nGadgetHeight - nTodayHeight;
+                while ($("DIV[group='" + nGroupID + "']").length > 0) {
+                    if ($("DIV[group='" + nGroupID + "']").length > 1) {
+                        $("DIV[group='" + nGroupID + "']").each(function (pIntIndex) {
+                            $(this).removeAttr("style");
+                            nHeight = $(this).height();
+                            if ($(this).children("dl").children("dd").length > 0) {
+                                $(this).children("dl").children("dd").attr("ht", nHeight);
+                            }
+                            else {
+                                $(this).append("<dl><dd id=\"ddResizeGroup_" + nGroupID + "_" + pIntIndex + "\" ht=\"" + nHeight + "\" class=\"bottom_height\" style=\"height:0px;\"></dd></dl>");
+                            }
+                        });
+
+                        $("DIV[group='" + nGroupID + "']").equalizeHeights();
+                        nHeight = $("DIV[group='" + nGroupID + "']:first").height();
+                        if (nGroupID == 0) {
+                            if (nHeight < nGadgetHeight) {
+                                nHeight = nGadgetHeight;
+                                $("DIV[group='" + nGroupID + "']:first").height(nHeight);
+                                $("DIV[group='" + nGroupID + "']").equalizeHeights();
+                            }
+                        }
+
+                        $("DD[id^='ddResizeGroup_" + nGroupID + "_']").each(function () {
+                            $(this).css({ "height": (nHeight - $(this).attr("ht")) + 1 + "px" });
+                        });
+                    }
+                    nGroupID++;
+                }
+                break;
+            case "4":   // 2행2열
+                nGadgetHeight = nGadgetHeight - nTodayHeight;
+                $("DIV[group='" + nGroupID + "']").each(function (pIntIndex) {
+                    $(this).removeAttr("style");
+                    nHeight = $(this).parent().height();
+                    if ($(this).children("dl").children("dd").length > 0) {
+                        $(this).children("dl").children("dd").attr("ht", nHeight);
+                    }
+                    else {
+                        $(this).append("<dl><dd id=\"ddResizeGroup_" + nGroupID + "_" + pIntIndex + "\" ht=\"" + nHeight + "\" class=\"bottom_height\" style=\"height:0px;\"></dd></dl>");
+                    }
+                });
+
+                $("DIV[group='" + nGroupID + "']").equalizeHeights();
+                nHeight = $("DIV[group='" + nGroupID + "']:first").parent().height();
+                if (nHeight < nGadgetHeight) {
+                    nHeight = nGadgetHeight;
+                    $("DIV[group='" + nGroupID + "']:first").height(nHeight);
+                    $("DIV[group='" + nGroupID + "']").equalizeHeights();
+                }
+                $("DD[id^='ddResizeGroup_" + nGroupID + "_']").each(function () {
+                    $(this).css({ "height": (nHeight - $(this).attr("ht")) + 1 + "px" });
+                });
+                break;
+            case "5":   // 2행3열(좌측)
+                nMaxHeight = 0;
+                $("DIV[group='" + nGroupID + "']").each(function (pIntIndex) {
+                    $(this).removeAttr("style");
+                    nHeight = $(this).height();
+                    if ($(this).attr("overheight_id") != null) {
+                        nHeight = $(this).parent().height() + nTodayHeight;
+                    }
+                    if ($(this).children("dl").children("dd").length > 0) {
+                        $(this).children("dl").children("dd").attr("ht", nHeight);
+                    }
+                    else {
+                        $(this).append("<dl><dd id=\"ddResizeGroup_" + nGroupID + "_" + pIntIndex + "\" ht=\"" + nHeight + "\" class=\"bottom_height\" style=\"height:0px;\"></dd></dl>");
+                    }
+                    if (nMaxHeight < nHeight) {
+                        nMaxHeight = nHeight;
+                    }
+                });
+
+                if (nMaxHeight < nGadgetHeight) {
+                    nMaxHeight = nGadgetHeight;
+                }
+
+                $("DD[id^='ddResizeGroup_" + nGroupID + "_']").each(function () {
+                    $(this).css({ "height": (nMaxHeight - $(this).attr("ht")) + 1 + "px" });
+                });
+                break;
+            case "6":   // 3단
+                $("DIV[group='" + nGroupID + "']").each(function (pIntIndex) {
+                    $(this).removeAttr("style");
+                    nHeight = $(this).height();
+                    if ($(this).children("dl").children("dd").length > 0) {
+                        $(this).children("dl").children("dd").attr("ht", nHeight);
+                    }
+                    else {
+                        $(this).append("<dl><dd id=\"ddResizeGroup_" + nGroupID + "_" + pIntIndex + "\" ht=\"" + nHeight + "\" class=\"bottom_height\" style=\"height:0px;\"></dd></dl>");
+                    }
+                });
+
+                $("DIV[group='" + nGroupID + "']").equalizeHeights();
+                nHeight = $("DIV[group='" + nGroupID + "']:first").height();
+                if (nHeight < nGadgetHeight) {
+                    nHeight = nGadgetHeight;
+                    $("DIV[group='" + nGroupID + "']:first").height(nHeight);
+                    $("DIV[group='" + nGroupID + "']").equalizeHeights();
+                }
+
+                $("DD[id^='ddResizeGroup_" + nGroupID + "_']").each(function () {
+                    $(this).css({ "height": (nHeight - $(this).attr("ht")) + 1 + "px" });
+                });
+                break;
+            case "0":   // 기타
+                break;
+        }
+    }
+
+    // 새로고침
+    function aRefresh_onclick() {
+        window.location.reload(true);
+    }
+
+</script>
+
+						</div>
+						<div id="divAside" class="aside"><div id='gadget_hideDiv' style='position:absolute;top:0px;left:0px;filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);z-index:-1;margin-left:17px;'><iframe style='width:200px;height:1000px;' frameborder='0' id='gadget_hideIfram'></iframe></div><div class="btn_gadget"><p><a onclick="XFN_GadgetResize('')" style='cursor:pointer;'><img id="imgClose" src="/Images/Images/Portal/WebGadget/btn_gadget02.gif" alt="닫기" title="닫기" /></a></p></div><div id="divGadget" class="gadget" style='right:-200;'><div class="gadget_top"><p class="gadet_ad"><a onclick="XFN_OpenGadgetSetting()" style='cursor:pointer;'><img src="/Images/Images/Portal/WebGadget/ico_gadget_ad.gif" alt="설정" title="설정" /></a></p><div class="ly_help" style="display:none;" id="divLy_help"><div class="gadget_ad"><h4>설정</h4><div class="gadget_ad_all"><input id="chkGadgetAll" name="chkGadgetAll" type="checkbox" value="GadgetAll" style="cursor: pointer;" class="input_check" onclick="XFN_ChkGadgetAll_OnClick();" /><label for="chkGadgetAll" style="cursor: pointer;">설정</label></div><ul id="ulGadgetList"><li><input id="chkGadgetMemo" name="chkGadgetSelected"  type="checkbox" style="cursor: pointer;" value="5" class="input_check" checked="checked" IconURL="/Images/Images/Portal/WebGadget/ico_gadget05"/><label for="chkGadgetMemo" style="cursor: pointer;">메모장</label></li><li><input id="chkGadgetRecentBoard" name="chkGadgetSelected"  type="checkbox" style="cursor: pointer;" value="2" class="input_check" checked="checked" IconURL="/Images/Images/Portal/WebGadget/ico_gadget02"/><label for="chkGadgetRecentBoard" style="cursor: pointer;">최근조회 게시판</label></li><li><input id="chkGadgetRecentArticle" name="chkGadgetSelected"  type="checkbox" style="cursor: pointer;" value="1" class="input_check" checked="checked" IconURL="/Images/Images/Portal/WebGadget/ico_gadget01"/><label for="chkGadgetRecentArticle" style="cursor: pointer;">최근조회 글</label></li><li><input id="chkGadgetOftenMenu" name="chkGadgetSelected"  type="checkbox" style="cursor: pointer;" value="3" class="input_check" checked="checked" IconURL="/Images/Images/Portal/WebGadget/ico_gadget03"/><label for="chkGadgetOftenMenu" style="cursor: pointer;">즐겨쓰는 메뉴</label></li><li><input id="chkGadgetOftenAddress" name="chkGadgetSelected"  type="checkbox" style="cursor: pointer;" value="4" class="input_check" checked="checked" IconURL="/Images/Images/Portal/WebGadget/ico_gadget04"/><label for="chkGadgetOftenAddress" style="cursor: pointer;">자주쓰는 연락처</label></li></ul><center><table class="pop_btn2"><tr><td><a onclick="XFN_ConfirmGadgetSetting()" style='cursor:pointer;'><em class="btn_bs2_l"><span class="btn_bs2_r"><strong class="txt_btn2_bs">확인</strong></span></em></a><a onclick="XFN_CloseGadgetSetting()" style='cursor:pointer;'><em class="btn_ws2_l"><span class="btn_ws2_r"><strong class="txt_btn2_ws">취소</strong></span></em></a></td></tr></table></center><div class="edge_rgt"></div></div></div><ul class="gadget_top_list"><li class="gadget_menu"><span class="txt_gadget"><a onclick="XFM_GadgetVisible('5')" style='cursor:pointer;'><span class="gadget_img"><img src="/Images/Images/Portal/WebGadget/ico_gadget05_on.gif" title="메모장" alt="메모장" id="imgGadget_5" /></span>메모장</a></span></li><li class="gadget_menu"><span class="txt_gadget"><a onclick="XFM_GadgetVisible('2')" style='cursor:pointer;'><span class="gadget_img"><img src="/Images/Images/Portal/WebGadget/ico_gadget02_on.gif" title="최근조회 게시판" alt="최근조회 게시판" id="imgGadget_2" /></span>최근조회 게시판</a></span></li><li class="gadget_menu"><span class="txt_gadget"><a onclick="XFM_GadgetVisible('1')" style='cursor:pointer;'><span class="gadget_img"><img src="/Images/Images/Portal/WebGadget/ico_gadget01_on.gif" title="최근조회 글" alt="최근조회 글" id="imgGadget_1" /></span>최근조회 글</a></span></li><li class="gadget_menu"><span class="txt_gadget"><a onclick="XFM_GadgetVisible('3')" style='cursor:pointer;'><span class="gadget_img"><img src="/Images/Images/Portal/WebGadget/ico_gadget03_on.gif" title="즐겨쓰는 메뉴" alt="즐겨쓰는 메뉴" id="imgGadget_3" /></span>즐겨쓰는 메뉴</a></span></li><li class="gadget_menu"><span class="txt_gadget"><a onclick="XFM_GadgetVisible('4')" style='cursor:pointer;'><span class="gadget_img"><img src="/Images/Images/Portal/WebGadget/ico_gadget04_on.gif" title="자주쓰는 연락처" alt="자주쓰는 연락처" id="imgGadget_4" /></span>자주쓰는 연락처</a></span></li></ul></div><div id="divGadgets"><div id="divGadget5" style=""><div class="gadget_memo"><ul class="memo_list" id="ulPage"><li style="" memoID="63"><a style='cursor:pointer;' onclick="XFN_GadgetMemoPaging('1', '63')"><img src="/Images/Images/Portal/WebGadget/m_01_on.gif" alt="1" title="1" /></a></li></ul><textarea id="txtGadgetMemo" class="memo_con" onfocus="XFN_GadgettxtGadgetMemo_OnFocus();" onkeydown="XFN_GadgettxtGadgetMemo_OnKeyDown();" onkeyup="XFN_GadgettxtGadgetMemo_OnKeyUp();" onblur="XFN_GadgettxtGadgetMemo_OnBlur();">메모장으로 편리하게 간단한 메모를 정리해보세요.</textarea><p class="memo_remove"><a onclick="XFN_GadgetMemoCreate();" style='cursor:pointer;' class="join_btn_memo_re" title="새글"></a><a style='cursor:pointer;' onclick="XFN_GadgetMemoDelete()" class="join_btn_memo_de" title="삭제"></a></p><p class="memo_limit"><span class="txt_memo11">(<span id="spanGadgetMemoCharactersCount">0</span>/1000자)</span></p><input type="hidden" id="hidMemoIdx" value="63" /><input type="hidden" id="hidMemoPaging" value="1" /></div></div><div id="divGadget2" style=""><div class="gadget_box"><h3 class="gadget_t"><span class="gadget_top_tit" style="background:url(/Images/Images/Portal/WebGadget/ico_gadget_top2.gif) no-repeat 6px 2px;">최근조회 게시판</span></h3><p class="btn_x"><a style='cursor:pointer;' onclick="XFN_GadgetClose('2')" class="join_btn_gadet_x" title="닫기"></a></p><ul class="gadget_list_n"><li class="gadget_list_m"><p class="ellipsis3"><span class="gadget_list"><a href="javascript:XFN_aRecentBoard_OnClick('hidRecentBoardURL0');" title='부서 게시 분류 > CEO Office > COO Office'>IT팀</a><input type="hidden" id="hidRecentBoardURL0" value="/WebSite/Basic/Board/BoardList.aspx?system=Board&fdid=1233" /></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span class="gadget_list"><a href="javascript:XFN_aRecentBoard_OnClick('hidRecentBoardURL1');" title='게시 분류'>IT공지</a><input type="hidden" id="hidRecentBoardURL1" value="/WebSite/Basic/Board/BoardList.aspx?system=Board&fdid=1224" /></span></p></li></ul></div></div><div id="divGadget1" style=""><div class="gadget_box"><h3 class="gadget_t"><span class="gadget_top_tit" style="background:url(/Images/Images/Portal/WebGadget/ico_gadget_top1.gif) no-repeat 6px 2px;">최근조회 글</span></h3><p class="btn_x"><a style='cursor:pointer;' onclick="XFN_GadgetClose('1')" class="join_btn_gadet_x" title="닫기"></a></p><ul class="gadget_list_n"><li class="gadget_list_m"><p class="ellipsis3"><span class="gadget_list"><img src='/images/images/common/icon/no_data.gif' /> 조회할 목록이 없습니다.</span></p></li></ul></div></div><div id="divGadget3" style=""><div class="gadget_box"><h3 class="gadget_t"><span class="gadget_top_tit" style="background:url(/Images/Images/Portal/WebGadget/ico_gadget_top3.gif) no-repeat 6px 2px;">즐겨쓰는 메뉴</span></h3><p class="btn_x"><a style='cursor:pointer;' onclick="XFN_GadgetClose('3')" class="join_btn_gadet_x" title="닫기"></a></p><ul class="gadget_list_n"><li class="gadget_list_m"><p class="ellipsis3"><span class="gadget_join"><a href="javascript:XFN_aOftenMenu_OnClick('hidOftenMenuURL0');">전자결재</a><input type="hidden" id="hidOftenMenuURL0" value="/WebSite/Approval/ApprovalMain.aspx?system=Approval" /></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span class="gadget_join"><a href="javascript:XFN_aOftenMenu_OnClick('hidOftenMenuURL1');">휴가관리</a><input type="hidden" id="hidOftenMenuURL1" value="/WebSite/Extension/VacationManager/Main.aspx?system=VacationManager" /></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span class="gadget_join"><a href="javascript:XFN_aOftenMenu_OnClick('hidOftenMenuURL2');">공지</a><input type="hidden" id="hidOftenMenuURL2" value="/WebSite/Basic/Board/BoardMain.aspx?system=Board" /></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span class="gadget_join"><a href="javascript:XFN_aOftenMenu_OnClick('hidOftenMenuURL3');">문서관리</a><input type="hidden" id="hidOftenMenuURL3" value="/WebSite/Extension/Doc/DocHomeABL.aspx?system=Doc&alias=DocManageHome&mnid=567" /></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span class="gadget_join"><a href="javascript:XFN_aOftenMenu_OnClick('hidOftenMenuURL4');">Compliance</a><input type="hidden" id="hidOftenMenuURL4" value="/WebSite/Extension/Compliance/CPAccountManage.aspx?system=CP&alias=CP.AccountManage.AM&mnid=553" /></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span class="gadget_join"><a href="javascript:XFN_aOftenMenu_OnClick('hidOftenMenuURL5');">HR</a><input type="hidden" id="hidOftenMenuURL5" value="/WebSite/Extension/HR/HRCareerList.aspx?system=HR&alias=HR.CareerList&mnid=499" /></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span class="gadget_join"><a href="javascript:XFN_aOftenMenu_OnClick('hidOftenMenuURL6');">홈</a><input type="hidden" id="hidOftenMenuURL6" value="/WebSite/Portal/Main.aspx?system=Portal" /></span></p></li></ul></div></div><div id="divGadget4" style=""><div class="gadget_box"><h3 class="gadget_t"><span class="gadget_top_tit" style="background:url(/Images/Images/Portal/WebGadget/ico_gadget_top4.gif) no-repeat 6px 2px;">자주쓰는 연락처</span></h3><p class="btn_x"><a style='cursor:pointer;' onclick="XFN_GadgetClose('4')" class="join_btn_gadet_x" title="닫기"></a></p><ul class="gadget_list_n"><li class="gadget_list_m"><p class="ellipsis3"><span style='cursor:pointer;' onclick="XFN_ShowContextMenuConnectUser(event, 'andrewk', 'andrewk@ablamdev.co.kr', 'andrew.kim@ablgam.com', '010-8857-2284');"><a> 김형태 (IT팀,IT Manager,과장)</a></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span style='cursor:pointer;' onclick="XFN_ShowContextMenuConnectUser(event, 'donghyj', 'donghyj@ablamdev.co.kr', 'donghyun.jeon@ablgam.com', '010-4212-4824');"><a> 전동현 (기관영업팀,Head of Institutional Sales,본부장)</a></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span style='cursor:pointer;' onclick="XFN_ShowContextMenuConnectUser(event, 'khkyung', 'khkyung@ablamdev.co.kr', 'kwanghyun.kyung@ablgam.com', '010-4595-9032');"><a> 경광현 (CEO Office,Chief Executive Officer,대표이사)</a></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span style='cursor:pointer;' onclick="XFN_ShowContextMenuConnectUser(event, 'nhkim', 'nhkim@ablamdev.co.kr', 'naomi.kim@ablgam.com', '010-7367-4505');"><a> 김남희 (인사팀,Head of Human Resources/Administration,본부장)</a></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span style='cursor:pointer;' onclick="XFN_ShowContextMenuConnectUser(event, 'lucyw', 'lucyw@ablamdev.co.kr', 'lucy.woo@ablgam.com', '010-2066-1128');"><a> 우수진 (펀드오퍼레이션팀,Head of Fund Operation,부장)</a></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span style='cursor:pointer;' onclick="XFN_ShowContextMenuConnectUser(event, 'hhroh', 'hhroh@ablamdev.co.kr', 'hyunho.roh@ablgam.com', '010-8873-6520');"><a> 노현호 (리스크관리팀,Head of Risk Mgmt. & IT / CRO,본부장)</a></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span style='cursor:pointer;' onclick="XFN_ShowContextMenuConnectUser(event, 'jinhor', '@', 'jinho.ryu@ablgam.com', '010-9044-6710');"><a> 류진호 (채권운용팀,Head of Fixed Income Mgmt.,본부장)</a></span></p></li><li class="gadget_list_m"><p class="ellipsis3"><span style='cursor:pointer;' onclick="XFN_ShowContextMenuConnectUser(event, 'kennye', '@', 'kenny.eoh@ablgam.com', '010-7758-5605');"><a> 어규현 (Real Estate & Infrastructure,Head of Real Estate/Infrastructure,본부장)</a></span></p></li></ul></div></div></div><p class="gadget_bottom"></p></div></div>
+					</div>
+                </div>
+				<!-- Content 끝 -->
+				<!-- Footer 시작 -->
+				<div id="divFooter" class="footer">
+					<p class="copyright">
+                        <span class="txt_copyright">Copyright ⓒ </span>
+                        <span class="txt_company" style="color:#ff9600">&nbsp;ABL Global Asset Management&nbsp;</span>
+                        <span class="txt_copyright">&nbsp;All&nbsp;Rights&nbsp;Reserved.</span>
+
+                        <!-- 타임아웃 체크 관련 -->
+                        <span id="spn_TimeOutCheck" style="color:#3DB8E7;font-weight:bold;" title="TimeOut"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="spn_TimeOutNoticeMessage"></span><font color='white'> - 2018-07-20 오후 2:45:24 </font>
+                        <script type="text/javascript">
+                            var g_StayTimeOutMinSetting = "0";
+                            var g_StayTimeOutAfterPage = "Self";
+                            var g_StayTimeOutSec = g_StayTimeOutMinSetting * 60;
+                            var g_StayTimeOutInterval = null;
+                            if (g_StayTimeOutMinSetting > 0) {
+                                g_StayTimeOutInterval = setInterval("XFN_StayTimeOutCheckStart()", 1000);
+                            }
+                        </script>
+                    </p>
+                    <!-- 사용자 IP/최종접속시간 표시 -->
+                    <div id="divUserIP_LastTime" class="user_ip_lasttime">
+                    </div>
+                    <!-- 모바일 버전 보기 시작 -->
+
+                    <!-- 모바일 버전 보기 끝 -->
+				</div>
+				<!-- Footer 끝 -->
+			</div>
+            </div>
+            <div style="display: none;">
+                <input type="hidden" name="ctl00$hidLoginSelected" id="hidLoginSelected" value="Default" />
+                <input type="hidden" name="ctl00$hidDevHelperInfo" id="hidDevHelperInfo" />
+            </div>
+		</form>
+        <!-- 이기종 시스템에 우리 시스템을 삽입시 사이즈 변경을 위한 처리 -->
+        <iframe id="ifrmHidden" src='' height='0' width='0' frameborder='0'></iframe>
+        <script type="text/javascript">
+            function XFN_EmbaddedIframeResize() {
+                // What's the page height?
+                var height = document.body.scrollHeight;
+                // Going to 'pipe' the data to the parent through the ifrmHidden.
+                var pipe = document.getElementById('ifrmHidden');
+                // Cachebuster a precaution here to stop browser caching interfering
+                if ('' != "") {
+                    pipe.src = '' + height + '&cacheb=' + Math.random();
+                }
+            }
+        </script>
+	</body>
+</html>
